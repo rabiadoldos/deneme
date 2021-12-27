@@ -1,0 +1,161 @@
+﻿@page "{searchString?}"
+@model deneme.Pages.Listeyeni.IndexModel
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+
+<body>
+
+
+    <h1 style="text-align:center; color:darkcyan">Başvuran Personel Listesi</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-9">
+                <form>
+                    <select asp-for="secilipoz" asp-items="Model.pozss" class="form-control">
+                        <option value="">Başvurulan Pozisyon Seçimi</option>
+                        @*<option value="Bilgisayar Mühendisliği">Bilgisayar Mühendisliği</option>
+                <option value="İnşaat Mühendisliği">İnşaat Mühendisliği</option>
+                <option value="Harita Mühendisliği">Harita Mühendisliği</option>
+                <option value="Elektrik Mühendisliği">Elektrik Mühendisliği</option>
+                <option value="Harita Teknikerliği">Harita Teknikerliği</option>*@
+                    </select>
+                    <hr />
+
+                    Aranacak Personel: <input type="text" asp-for="SearchString" />
+                    <input type="submit" value="Getir" />
+                    <a asp-page="./Index">  Listeye Geri Dön</a>
+                </form>
+
+                <hr />
+            </div>
+            <hr />
+
+            <table id="personel">
+
+                <tr>
+
+                    <th>
+                        TC Kimlik No
+                    </th>
+                    <th>
+                        Ad
+                    </th>
+                    <th>
+                        Soyad
+                    </th>
+                    <th>
+                        Cinsiyet
+                    </th>
+
+
+                    <th>
+                        Eğitim Durumu
+                    </th>
+                    <th>
+                        Meslek
+                    </th>
+
+                    <th>
+                        Başvurulan Pozisyon
+                    </th>
+                    <th>
+                        Yerleşim Yeri Belgesi
+                    </th>
+                    <th>
+                        Diploma Belgesi
+                    </th>
+                    <th>
+                        Hizmet Döküm Belgesi
+                    </th>
+                    <th>
+                        Askerlik Belgesi
+                    </th>
+                    <th>
+                        Ehliyet Belgesi
+                    </th>
+                    <th>
+                        Fotoğraf Belgesi
+                    </th>
+                    <th>
+                        Adli Sicil Belgesi
+                    </th>
+
+                </tr>
+                @foreach (var item in Model.Personels)
+                {
+            <tr>
+
+                <td>@Html.DisplayFor(modelItem => item.Tc)</td>
+                <td>@Html.DisplayFor(modelItem => item.Ad)</td>
+                <td>@Html.DisplayFor(modelItem => item.Soyad)</td>
+                <td>@Html.DisplayFor(modelItem => item.Cinsiyet)</td>
+
+                <td>@Html.DisplayFor(modelItem => item.Egitimdurumu)</td>
+                <td>@Html.DisplayFor(modelItem => item.Meslek)</td>
+                <td>@Html.DisplayFor(modelItem => item.Pozisyon)</td>
+                <td>
+                    @if (item.Ikametgah != null)
+                    {
+                        <form asp-page-handler="Download" method="post" asp-route-id="@item.Id" asp-route-rd="1">
+                            <input type="submit" class="btn btn-dark" value="Yerleşim Yeri">
+                        </form>}
+                </td>
+                <td>
+                    @if (item.Diploma != null)
+                    {
+                        <form asp-page-handler="Download" method="post" asp-route-id="@item.Id" asp-route-rd="2">
+                            <input type="submit" class="btn btn-dark" value="Diploma">
+                        </form>}
+                </td>
+                <td>
+                    @if (item.Hizmetdokum != null)
+                    {
+                        <form asp-page-handler="Download" method="post" asp-route-id="@item.Id" asp-route-rd="3">
+                            <input type="submit" class="btn btn-dark" value="Hizmet Döküm">
+                        </form>}
+                </td>
+
+                <td>
+                    @if (item.Askerlik != null)
+                    {
+                        <form asp-page-handler="Download" method="post" asp-route-id="@item.Id" asp-route-rd="4">
+                            <input type="submit" class="btn btn-dark" value="Askerlik">
+                        </form>}
+                </td>
+
+                <td>
+                    @if (item.Ehliyet != null)
+                    {
+                        <form asp-page-handler="Download" method="post" asp-route-id="@item.Id" asp-route-rd="5">
+                            <input type="submit" class="btn btn-dark" value="Ehliyet">
+                        </form>}
+                </td>
+                <td>
+                    @if (item.Fotograf != null)
+                    {
+                        <form asp-page-handler="Download" method="post" asp-route-id="@item.Id" asp-route-rd="6">
+                            <input type="submit" class="btn btn-dark" value="Fotoğraf">
+                        </form>}
+                </td>
+
+                <td>
+                    @if (item.Adlisicil != null)
+                    {
+                        <form asp-page-handler="Download" method="post" asp-route-id="@item.Id" asp-route-rd="7">
+                            <input type="submit" class="btn btn-dark" value="Adli Sicil">
+                        </form>}
+                </td>
+
+
+            </tr>
+                }
+
+            </table>
+        </div>
+
+    </div>
+</body>

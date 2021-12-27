@@ -1,0 +1,73 @@
+﻿@page
+@model deneme.Pages.Dosyaliste.IndexModel
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<body>
+
+    <h1 style="text-align:center; color:darkcyan"> Başvuran Personel Listesi</h1>
+
+    <table id="personel">
+
+        <tr style="width: 100%">
+
+           
+            <th>
+                Yerleşim Yeri Belgesi (pdf)
+            </th>
+            <th>
+                Diploma Belgesi (pdf)
+            </th>
+            <th>
+                Hizmet Döküm Belgesi (pdf)
+            </th>
+            <th>
+                Askerlik Belgesi (pdf)
+            </th>
+            <th>
+                Ehliyet Belgesi (pdf)
+            </th>
+            <th>
+                Adli Sicil Belgesi (pdf)
+            </th>
+            <th>
+                Fotoğraf (jpg)
+            </th>
+
+
+        </tr>
+        @foreach (var personel in Model.Personels)
+        {
+    <tr>
+
+        <td>
+            <a asp-page="/Uploadfile/Index" asp-route-id="@personel.Id" >Upload Invoice</a>
+        </td>
+        <td>
+            <a asp-page="/Uploadfile/Index" asp-route-id="@personel.Id">Upload Invoice</a>
+        </td>
+        <td>
+            <a asp-page="/Uploadfile/Index" asp-route-id="@personel.Id">Upload Invoice</a>
+        </td>
+        <td>
+            <a asp-page="/Uploadfile/Index" asp-route-id="@personel.Id">Upload Invoice</a>
+        </td>
+        <td>
+            <a asp-page="/Uploadfile/Index" asp-route-id="@personel.Id">Upload Invoice</a>
+        </td>
+        <td>
+            <a asp-page="/Uploadfile/Index" asp-route-id="@personel.Id">Upload Invoice</a>
+        </td>
+        <td>
+            <a asp-page="/Uploadfile/Index" asp-route-id="@personel.Id">Upload Invoice</a>
+        </td>
+    </tr>
+        }
+
+    </table>
+
+</body>
+

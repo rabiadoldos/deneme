@@ -1,0 +1,128 @@
+﻿@page
+@model deneme.Pages.Liste.IndexModel
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+   
+}
+
+
+<body>
+
+
+    <h1 style="text-align:center; color:darkcyan">Başvuran Personel Listesi</h1>
+    <div class="container">
+        <div class="row">
+          
+                <table id="personel">
+
+                    <tr>
+                        <th>
+                            Sıra No
+                        </th>
+                        <th>
+                            TC Kimlik No
+                        </th>
+                        <th>
+                            Ad
+                        </th>
+                        <th>
+                            Soyad
+                        </th>
+                        <th>
+                            Cinsiyet
+                        </th>
+
+                        <th>
+                            Medeni Durum
+                        </th>
+                        <th>
+                            Cep Telefon Numarası
+                        </th>
+                        <th>
+                            2. Cep Telefon Numarası
+                        </th>
+                        <th>
+                            E-mail
+                        </th>
+                        <th>
+                            Adres
+                        </th>
+                        <th>
+                            İş Durumu
+                        </th>
+                        <th>
+                            Eğitim Durumu
+                        </th>
+                        <th>
+                            Meslek
+                        </th>
+                        <th>
+                            Askerlik Durumu
+                        </th>
+                        <th>
+                            Ehliyet Durumu
+                        </th>
+                        <th>
+                            Başvurulan Pozisyon
+                        </th>
+                        <th>
+                            Yerleşim Yeri Belgesi
+                        </th>
+                        <th>
+                            Diploma Belgesi
+                        </th>
+                        <th>
+                            Hizmet Döküm Belgesi
+                        </th>
+                       
+                    </tr>
+                    @foreach (var personel in Model.Personels)
+                    {
+                        <tr>
+                            <td>@personel.Id</td>
+                            <td>@personel.Tc</td>
+                            <td>@personel.Ad</td>
+                            <td>@personel.Soyad</td>
+                            <td>@personel.Cinsiyet</td>
+                            <td>@personel.Medenidurum</td>
+                            <td>@personel.Tel</td>
+                            <td>@personel.Ikincitel</td>
+                            <td>@personel.Email</td>
+                            <td>@personel.Adres</td>
+                            <td>@personel.Isdurumu</td>
+                            <td>@personel.Egitimdurumu</td>
+                            <td>@personel.Meslek</td>
+                            <td>@personel.Askersec</td>
+                            <td>@personel.Ehliyetsec</td>
+                            <td>@personel.Pozisyon</td>
+                            <td>
+                                @if (personel.Ikametgah != null)
+                                {
+                                    <form asp-page-handler="Download" method="post" asp-route-id="@personel.Id" asp-route-rd="1">
+                                        <input type="submit" class="btn btn-dark" value="Yerleşim Yeri">
+                                    </form>}
+                            </td>
+                            <td>
+                                @if (personel.Diploma != null)
+                                {
+                                    <form asp-page-handler="Download" method="post" asp-route-id="@personel.Id" asp-route-rd="2">
+                                        <input type="submit" class="btn btn-dark" value="Diploma">
+                                    </form>}
+                            </td>
+                            <td>
+                                @if (personel.Hizmetdokum != null)
+                                {
+                                    <form asp-page-handler="Download" method="post" asp-route-id="@personel.Id" asp-route-rd="3">
+                                        <input type="submit" class="btn btn-dark" value="Hizmet Döküm">
+                                    </form>}
+                            </td>
+
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        
+    </div>
+</body>

@@ -1,0 +1,308 @@
+﻿@page
+@model deneme.Pages.Basvur.IndexModel
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-10">
+                <form method="post" class="list-group-horizontal" enctype="multipart/form-data">
+
+                    <div class="form-group row">
+
+                        <div class="col-12">
+                            <h3 style="text-align:center; color:white; background-color:steelblue"> Başvuru Formu</h3>
+                        </div>
+                    </div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group row">
+                        <label class="col-3 col-form-label">TC Kimlik Numarası : </label>
+                        <div class="col-9">
+                            @*<label asp-for="Personel.Tc" class="control-label"></label>*@
+                            <input asp-for="Personel.Tc" class="form-control">
+                            <span asp-validation-for="Personel.Tc" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Personel.Tc" class="control-label"></label>
+            <input asp-for="Personel.Tc" class="form-control" />
+            <span asp-validation-for="Personel.Tc" class="text-danger"></span>
+        </div>*@
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group row">
+                        <label class="col-3 col-form-label">Ad : </label>
+                        <div class="col-9">
+                            <input asp-for="Personel.Ad" class="form-control">
+                            <span asp-validation-for="Personel.Ad" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group row">
+                        <label class="col-3 col-form-label">Soyad : </label>
+                        <div class="col-9">
+                            <input asp-for="Personel.Soyad" class="form-control">
+                            <span asp-validation-for="Personel.Soyad" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group row">
+                        <label class="col-3 col-form-label">Cinsiyet : </label>
+                        <div class="col-9">
+                            <select asp-for="Personel.Cinsiyet" name="Personel.Cinsiyet" class="form-control">
+                                <option value="">Seçim Yapınız</option>
+                                <option value="Kadın">Kadın</option>
+                                <option value="Erkek">Erkek</option>
+                            </select>
+                            <span asp-validation-for="Personel.Cinsiyet" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group row">
+                        <label class="col-3 col-form-label">Medeni Durum : </label>
+                        <div class="col-9">
+                            <select asp-for="Personel.Medenidurum" name="Personel.Medenidurum" class="form-control">
+                                <option value="">Seçim Yapınız</option>
+                                <option value="Evli">Evli</option>
+                                <option value="Bekar">Bekar</option>
+                            </select>
+                            <span asp-validation-for="Personel.Medenidurum" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group row">
+                        <label class="col-3 col-form-label">Cep Telefon Numarası (Başında 0 olmadan 10 haneli olarak giriniz.) : </label>
+                        <div class="col-9">
+                            <input asp-for="Personel.Tel" class="form-control">
+                            <span asp-validation-for="Personel.Tel" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group row">
+                        <label class="col-3 col-form-label">Ulaşılabilecek 2. Cep Telefon Numarası (Başında 0 olmadan 10 haneli olarak giriniz.) : </label>
+                        <div class="col-9">
+                            <input asp-for="Personel.Ikincitel" class="form-control">
+                            <span asp-validation-for="Personel.Ikincitel" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group row">
+                        <label class="col-3 col-form-label">Email : </label>
+                        <div class="col-9">
+                            <input asp-for="Personel.Email" class="form-control">
+                            <span asp-validation-for="Personel.Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group row">
+                        <label class="col-3 col-form-label">Adres : </label>
+                        <div class="col-9">
+                            @Html.TextAreaFor(m => m.Personel.Adres, new { @class = "form-control", rows = 6 })
+                            <span asp-validation-for="Personel.Adres" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group row">
+                        <label class="col-3 col-form-label">İş Durumu : </label>
+                        <div class="col-9">
+                            <select asp-for="Personel.Isdurumu" name="Personel.Isdurumu" class="form-control">
+                                <option value="">Seçim Yapınız</option>
+                                <option value="Çalışıyor">Çalışıyor</option>
+                                <option value="Çalışmıyor">Çalışmıyor</option>
+                            </select>
+                            <span asp-validation-for="Personel.Isdurumu" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group row">
+                        <label class="col-3 col-form-label">Eğitim Durumu : </label>
+                        <div class="col-9">
+                            <select asp-for="Personel.Egitimdurumu" name="Personel.Egitimdurumu" id="egitimdurum" class="form-control">
+                                <option value="">Seçim Yapınız</option>
+                                <option value="Yüksek Lisans">Yüksek Lisans</option>
+                                <option value="Lisans">Lisans</option>
+                                <option value="Önisans">Önlisans</option>
+                                <option value="Lise">Lise</option>
+                                <option value="İlkokul">İlkokul</option>
+                            </select>
+                            <span asp-validation-for="Personel.Egitimdurumu" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group row">
+                        <label class="col-3 col-form-label">Meslek : </label>
+                        <div class="col-9">
+                            <input asp-for="Personel.Meslek" class="form-control">
+                            <span asp-validation-for="Personel.Meslek" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group row">
+                        <label class="col-3 col-form-label">Askerlik Durumu : </label>
+                        <div class="col-9">
+                            <select asp-for="Personel.Askersec" name="Personel.Askersec" class="form-control">
+                                <option value="">Seçim Yapınız</option>
+                                <option value="Tecilli">Tecilli</option>
+                                <option value="Muaf">Muaf</option>
+                                <option value="Tamamladı">Tamamladı</option>
+                            </select>
+                            <span asp-validation-for="Personel.Askersec" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group row">
+                        <label class="col-3 col-form-label">Ehliyet Durumu : </label>
+                        <div class="col-9">
+                            <select asp-for="Personel.Ehliyetsec" name="Personel.Ehliyetsec" class="form-control">
+                                <option value="">Seçim Yapınız</option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                            </select>
+                            <span asp-validation-for="Personel.Ehliyetsec" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group row">
+                        <label class="col-3 col-form-label">Başvurmak İstediğiniz Pozisyon : </label>
+                        <div class="col-9">
+                            <select asp-for="Personel.Pozisyon" name="Personel.Pozisyon" class="form-control">
+                                <option value="">Seçim Yapınız</option>
+                                <option value="Bilgisayar Mühendisliği">Bilgisayar Mühendisliği</option>
+                                <option value="İnşaat Mühendisliği">İnşaat Mühendisliği</option>
+                                <option value="Harita Mühendisliği">Harita Mühendisliği</option>
+                                <option value="Elektrik Mühendisliği">Elektrik Mühendisliği</option>
+                                <option value="Harita Teknikerliği">Harita Teknikerliği</option>
+                            </select>
+                            <span asp-validation-for="Personel.Pozisyon" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    @*<div class="form-group row">
+            <label class="col-3 col-form-label">Şehir : </label>
+            <div class="col-9">
+                <select name="sehir" class="form-control">
+                    <option>Edirne</option>
+                    <option>Kars</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-3 col-form-label">Hobiler : </label>
+            <div class="col-9">
+                <div>
+                    <input class="" type="checkbox"> Spor
+                    <input class="" type="checkbox"> Müzik
+                    <input class="" type="checkbox"> Resim
+                </div>
+            </div>
+        </div>*@
+
+                    @*<div class="form-group row">
+                   <label class="col-3 col-form-label">Açıklama : </label>
+                   <div class="col-9">
+                       <textarea class="form-control">
+
+        </textarea>
+                   </div>
+               </div>*@
+
+
+
+
+
+
+                    @*<div class="form-group row">
+            <label class="col-3 col-form-label">Belge:</label>
+            <div class="col-9">
+                <input type="file" class="form-control-file" name="dosya_ekle">
+            </div>
+        </div>*@
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <label class="col-3 col-form-label">Yerleşim Yeri Belgesini Yükleyiniz (PDF) :</label>
+                            <input asp-for="file1" class="form-control" accept=".pdf" type="file" />
+                            <input type="hidden" asp-for="Personel.Ikametgah" />
+                            <span asp-validation-for="Personel.Ikametgah" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <label class="col-3 col-form-label">Diploma Belgesini Yükleyiniz (PDF) :</label>
+                            <input asp-for="file2" class="form-control" accept=".pdf" type="file" />
+                            <span asp-validation-for="Personel.Diploma" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <label class="col-3 col-form-label">Hizmet Döküm Belgesini Yükleyiniz (PDF) :</label>
+                            <input asp-for="file3" class="form-control" accept=".pdf" type="file" />
+                            <span asp-validation-for="Personel.Hizmetdokum" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <label class="col-3 col-form-label">Askerlik Belgesini Yükleyiniz (PDF) :</label>
+                            <input asp-for="file4" class="form-control" accept=".pdf" type="file" />
+                            <span asp-validation-for="Personel.Askerlik" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <label class="col-3 col-form-label">Ehliyet Belgesini Yükleyiniz (PDF) :</label>
+                            <input asp-for="file5" class="form-control" accept=".pdf" type="file" />
+                            <span asp-validation-for="Personel.Ehliyet" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <label class="col-3 col-form-label">Fotoğraf Yükleyiniz (JPG) :</label>
+                            <input asp-for="file6" class="form-control" accept=".jpg" type="file" />
+                            <span asp-validation-for="Personel.Fotograf" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <label class="col-3 col-form-label">Adli Sicil Belgesini Yükleyiniz (PDF) :</label>
+                            <input asp-for="file7" class="form-control" accept=".pdf" type="file" />
+                            <span asp-validation-for="Personel.Adlisicil" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    @*<div class="form-group">
+            <div class="col-md-10">
+                <input class="btn btn-success" type="submit" value="Upload" />
+            </div>
+        </div>*@
+
+
+                    <div class="form-group row">
+                        <div class="col text-center">
+                            <input type="submit" value="BAŞVUR" class="btn btn-success">
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+</body>
